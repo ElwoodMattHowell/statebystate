@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request, redirect
+import data_search
+
 
 app = Flask(__name__)
 
@@ -65,7 +67,9 @@ def homepage():
 @app.route("/modal")
 def modal():
     state = request.args.get('state')
-    if not state or state not in states.values():
+    if not state or state not in states.keys():
         return redirect("/")
 
-    return render_template("modal.html", state=state)
+    crime_dict = data_search.crime_search(state)
+
+    return render_template("modal.html", crime_dict=crime_dict, state=states[state])

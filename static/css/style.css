@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+body {
+  background-color: #a7a6ba;
+  color: #222222
+}
+
 path {
   stroke: white;
   fill: purple;
@@ -34,4 +39,22 @@ path:hover {
   transform: translateX(-50%);
   transition: opacity .4s ease;
   z-index: 1;
+}
+
+span {
+  margin: 0 10px;
+}
+
+#title {
+  padding: 20px;
+  text-align: center;
+}
+
+label {
+  margin-right: 10px;
+}
+
+#map-container {
+  background-color: #5A5A5A;
+  height: 80vh;
 }

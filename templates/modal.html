@@ -6,7 +6,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">{{ state }}</h5>
+        <h4 class="modal-title" id="exampleModalLongTitle">{{ state }}</h4>
         <form action="/">
           <button type="submit" class="close close-button" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -14,7 +14,23 @@
         </form>
       </div>
       <div class="modal-body">
-        ...
+        <table class="table table-striped">
+          <caption><span>Year: {{ crime_dict.year }}</span><span>Population: {{ "{:,}".format(crime_dict.population)
+              }}</span>
+          </caption>
+          <tr>
+            <th>Crime</th>
+            <th>Occurances</th>
+            <th>Per 100,000 People</th>
+          </tr>
+          {% for key, value in crime_dict.crimes.items() %}
+          <tr>
+            <td>{{ key | replace("_", " ")}} :</td>
+            <td>{{ "{:,}".format(value.occurances) }}</td>
+            <td>{{ "{:,}".format(value.per100k) }}</td>
+          </tr>
+          {% endfor %}
+        </table>
       </div>
       <div class="modal-footer">
         <form action="/">
