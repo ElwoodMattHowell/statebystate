@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 import data_search
-
+import sqlite3
+from sqlite3 import Error
 
 app = Flask(__name__)
 
@@ -67,9 +68,24 @@ def homepage():
 @app.route("/modal")
 def modal():
     state = request.args.get('state')
+    year = request.args.get('year')
     if not state or state not in states.keys():
         return redirect("/")
 
-    crime_dict = data_search.crime_search(state)
+    try:
+        year = int(year)
+    except:
+        year = 2020
+
+    print(type(year))
+    print(year)
+
+    yearStart = year
+    yearEnd = year + 1
+
+    print(yearStart)
+    print(yearEnd)
+
+    crime_dict = data_search.crime_search(state, yearStart, yearEnd)
 
     return render_template("modal.html", crime_dict=crime_dict, state=states[state])

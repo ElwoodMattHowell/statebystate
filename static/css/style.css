@@ -2,7 +2,7 @@
 
 body {
   background-color: #a7a6ba;
-  color: #222222
+  color: #222222;
 }
 
 path {
@@ -20,10 +20,11 @@ path:hover {
 #us-map {
   display: block;
   position: absolute;
-  /* top: 0; */
-  left: 15%;
-  width: 60%;
+  top: 20%;
+  left: 25%;
+  width: 55%;
   height: auto;
+  transform: scale(1.5);
 }
 
 #details-box {
@@ -38,7 +39,7 @@ path:hover {
   width: fit-content;
   transform: translateX(-50%);
   transition: opacity .4s ease;
-  z-index: 1;
+  z-index: 2;
 }
 
 span {
@@ -54,7 +55,26 @@ label {
   margin-right: 10px;
 }
 
-#map-container {
+#map-panel {
+  position: relative;
   background-color: #5A5A5A;
   height: 80vh;
+  overflow: hidden;
+}
+
+.zoom {
+  margin-top: 50px;
+  margin-left: 2%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+
+.zoom-button {
+  margin: 10px;
+  z-index: 2;
+}
+
+.zoom-button:hover {
+  cursor: pointer;
 }
