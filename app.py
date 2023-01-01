@@ -1,7 +1,5 @@
 from flask import Flask, render_template, request, redirect
 import data_search
-import sqlite3
-from sqlite3 import Error
 
 app = Flask(__name__)
 
